@@ -23,7 +23,7 @@ public abstract class GoogleDriveActivity extends GoogleSignInActivity {
     private static final int GOOGLE_SIGN_IN_REQUEST = 1010;
 
     public void startGoogleDriveSignIn() {
-        GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(this, getGoogleSignInOptions());
+        GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(requireActivity(), getGoogleSignInOptions());
         Intent signInIntent = googleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, GOOGLE_SIGN_IN_REQUEST);
 
@@ -56,7 +56,7 @@ public abstract class GoogleDriveActivity extends GoogleSignInActivity {
         List<String> scopes = new ArrayList<>();
         scopes.add(DriveScopes.DRIVE_APPDATA);
 
-        GoogleAccountCredential credential = GoogleAccountCredential.usingOAuth2(this, scopes);
+        GoogleAccountCredential credential = GoogleAccountCredential.usingOAuth2(requireActivity(), scopes);
         credential.setSelectedAccount(signInAccount.getAccount());
         Drive.Builder builder = new Drive.Builder(
                 AndroidHttp.newCompatibleTransport(),

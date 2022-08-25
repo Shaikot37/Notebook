@@ -3,12 +3,18 @@ package com.shaikot.notebook.ui.fragments
 import android.os.Bundle
 import android.text.format.DateFormat
 import android.view.*
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.core.app.NavUtils
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.shaikot.notebook.R
 import com.shaikot.notebook.databinding.FragmentEditNotesBinding
 import com.shaikot.notebook.model.Notes
@@ -16,7 +22,7 @@ import com.shaikot.notebook.viewModel.NotesViewModel
 import java.util.*
 
 
-class EditNotesFragment : Fragment() {
+class EditNotesFragment : Fragment(), MenuProvider {
 
     val note by navArgs<EditNotesFragmentArgs>()
     lateinit var binding: FragmentEditNotesBinding
@@ -30,6 +36,10 @@ class EditNotesFragment : Fragment() {
     ): View? {
 
         binding = FragmentEditNotesBinding.inflate(layoutInflater, container, false)
+
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
 
         val callback: OnBackPressedCallback =
             object : OnBackPressedCallback(true) {
@@ -102,8 +112,45 @@ class EditNotesFragment : Fragment() {
 
     }
 
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        requireActivity().menuInflater.inflate(R.menu.delete_menu, menu)
+    }
+
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        when (menuItem.itemId) {
+            android.R.id.home -> {
+                requireActivity().onBackPressed()
+                return true
+            }
+            R.id.menu_delete -> {
+                val bottomSheet = BottomSheetDialog(requireContext(), R.style.BottomSheetStyle)
+                bottomSheet.setContentView(R.layout.delete_layout)
+
+                val yesButton = bottomSheet.findViewById<TextView>(R.id.yesButton)
+                val noButton = bottomSheet.findViewById<TextView>(R.id.noButton)
 
 
+                yesButton?.setOnClickListener {
+                    viewModel.deleteNote(note.data.id!!)
+                    bottomSheet.dismiss()
+                    requireActivity().onBackPressed()
+                }
+
+                noButton?.setOnClickListener {
+                    bottomSheet.dismiss()
+                }
+
+                bottomSheet.show()
+
+                return true
+            }
+
+            else ->{
+                return false
+
+            }
+        }
+    }
 
 
 }

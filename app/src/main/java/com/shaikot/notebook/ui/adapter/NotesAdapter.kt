@@ -46,11 +46,11 @@ class NotesAdapter(val requireContext: Context, var notesList: List<Notes>) :
 
         holder.binding.root.setOnClickListener{
 
-            //Store in SharedPreference
+           /* //Store in SharedPreference
             val preference=requireContext.getSharedPreferences("DeleteID", Context.MODE_PRIVATE)
             val editor=preference.edit()
             editor.putInt("id",data.id!!)
-            editor.commit()
+            editor.commit()*/
 
             val action = HomeFragmentDirections.actionHomeFragmentToEditNotesFragment(data)
             Navigation.findNavController(it).navigate(action)
