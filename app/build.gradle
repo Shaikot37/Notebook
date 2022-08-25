@@ -12,7 +12,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.application.notebook"
+        applicationId "com.shaikot.notebook"
         minSdk 21
         targetSdk 32
         versionCode 1
@@ -37,6 +37,10 @@ android {
 
     buildFeatures{
         viewBinding true
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
     }
 }
 
@@ -76,4 +80,19 @@ dependencies {
     //coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1'
+
+    implementation 'com.android.volley:volley:1.2.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+
+    //backup in google drive
+    implementation 'com.google.android.gms:play-services-auth:20.0.1'
+    implementation 'com.google.http-client:google-http-client-gson:1.26.0'
+    implementation('com.google.api-client:google-api-client-android:1.26.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+    implementation('com.google.apis:google-api-services-drive:v3-rev136-1.25.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+    implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
+
 }

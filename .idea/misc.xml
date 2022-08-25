@@ -10,7 +10,7 @@
         <entry key="app/src/main/res/drawable/red_dot.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/yellow_dot.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/yes_button.xml" value="0.1615" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.14175724637681159" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.14833984375" />
         <entry key="app/src/main/res/layout/delete_layout.xml" value="0.14175724637681159" />
         <entry key="app/src/main/res/layout/fragment_create_notes.xml" value="0.25" />

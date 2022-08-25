@@ -6,7 +6,7 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.application.notebook.ui.fragments.HomeFragment"
+        android:name="com.shaikot.notebook.ui.fragments.HomeFragment"
         android:label="All Notes"
         tools:layout="@layout/fragment_home" >
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/createNotesFragment"
-        android:name="com.application.notebook.ui.fragments.CreateNotesFragment"
+        android:name="com.shaikot.notebook.ui.fragments.CreateNotesFragment"
         android:label="Create Note"
         tools:layout="@layout/fragment_create_notes" >
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/editNotesFragment"
-        android:name="com.application.notebook.ui.fragments.EditNotesFragment"
+        android:name="com.shaikot.notebook.ui.fragments.EditNotesFragment"
         android:label="Edit Note"
         tools:layout="@layout/fragment_edit_notes" >
         <action
@@ -35,6 +35,6 @@
             app:destination="@id/homeFragment" />
         <argument
             android:name="data"
-            app:argType="com.application.notebook.model.Notes" />
+            app:argType="com.shaikot.notebook.model.Notes" />
     </fragment>
 </navigation>
