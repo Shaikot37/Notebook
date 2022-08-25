@@ -1,30 +1,14 @@
 package com.shaikot.notebook
 
-import android.app.Activity
-import android.content.Context
-import android.content.Intent
-import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
-import android.net.ConnectivityManager
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
-import com.google.android.gms.common.api.ApiException
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.api.services.drive.Drive
-import com.shaikot.notebook.google.GoogleDriveActivity
-import com.shaikot.notebook.google.GoogleDriveApiDataRepository
-import com.shaikot.notebook.viewModel.NotesViewModel
-import java.io.File
 
 
 class MainActivity : AppCompatActivity() , MenuProvider {

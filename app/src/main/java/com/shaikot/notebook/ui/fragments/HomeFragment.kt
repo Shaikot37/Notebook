@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
@@ -157,7 +156,7 @@ class HomeFragment : GoogleDriveActivity(), MenuProvider {
         }
 
         searchView = menu.findItem(R.id.app_bar_search).actionView as SearchView
-        Toast.makeText(requireContext(), menuList!!.size().toString(),Toast.LENGTH_SHORT).show()
+        //Toast.makeText(requireContext(), menuList!!.size().toString(),Toast.LENGTH_SHORT).show()
         searchView?.queryHint = "Enter notes here.."
 
         searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -226,7 +225,7 @@ class HomeFragment : GoogleDriveActivity(), MenuProvider {
 
 
     private fun hideOption(id: Int, menu:Menu) {
-        Toast.makeText(requireContext(),"hide size:"+menuList?.size(),Toast.LENGTH_SHORT).show()
+        //Toast.makeText(requireContext(),"hide size:"+menuList?.size(),Toast.LENGTH_SHORT).show()
         val item: MenuItem = menu.findItem(id)
         item.isVisible = false
     }
@@ -331,7 +330,7 @@ class HomeFragment : GoogleDriveActivity(), MenuProvider {
 
     override fun onGoogleDriveSignedInSuccess(driveApi: Drive?) {
         Toast.makeText(requireContext(), "Client Sign in success!", Toast.LENGTH_SHORT).show()
-        repository = GoogleDriveApiDataRepository(driveApi)
+        repository = driveApi?.let { GoogleDriveApiDataRepository(it) }
 
         /*if(repository!=null){
             hideOption(R.id.signin)

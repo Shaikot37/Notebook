@@ -24,12 +24,12 @@ class CreateNotesFragment : Fragment(), MenuProvider{
 
     var priority: String = "1"
 
-    val viewModel: NotesViewModel by viewModels()
+    private val viewModel: NotesViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = FragmentCreateNotesBinding.inflate(layoutInflater, container, false)
 
